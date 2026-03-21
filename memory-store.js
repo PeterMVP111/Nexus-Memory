@@ -1,34 +1,31 @@
-// memory-store.js
+'use strict';
 
+/**
+ * MemoryStore class for managing essence and safe reads.
+ * This class provides methods to save essence without overwriting existing data, 
+ * and ensures that all getter methods return null instead of undefined.
+ */
 class MemoryStore {
     constructor() {
-        this.active = {};
-        this.distilled = {};
-        this.essence = {};
-    }
-
-    saveActive(key, value) {
-        this.active[key] = value;
-    }
-
-    saveDistilled(key, value) {
-        this.distilled[key] = value;
+        this.store = {};
     }
 
     saveEssence(key, value) {
-        this.essence[key] = value;
-    }
-
-    getActive(key) {
-        return this.active[key];
-    }
-
-    getDistilled(key) {
-        return this.distilled[key];
+        if (this.store.hasOwnProperty(key)) {
+            console.warn(`Essence for key '${key}' already exists. Overwrite prevented.`);
+            return;
+        }
+        this.store[key] = value;
     }
 
     getEssence(key) {
-        return this.essence[key];
+        return this.store.hasOwnProperty(key) ? this.store[key] : null;
+    }
+
+    // Additional getter methods can be added here, all returning null instead of undefined
+    // Example: 
+    getAnotherValue(key) {
+        return this.store.hasOwnProperty(key) ? this.store[key] : null;
     }
 }
 
