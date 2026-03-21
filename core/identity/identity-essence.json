@@ -1,1 +1,40 @@
-{ "protected": true, "note": "Este archivo no se modifica automáticamente. No entra en destilación. No se usa para razonamiento. Solo orienta continuidad.", "essence": {} }
+{
+  "protected": true,
+  "note": "Este archivo no se modifica automáticamente. No entra en destilación. Solo orienta continuidad.",
+  "essence": {
+    "system": {
+      "name": "Nexus-Memory",
+      "purpose": "Continuidad intencional sin memoria acumulativa",
+      "version": "1.0.0"
+    },
+    "core": {
+      "principles": [
+        "No reconstruyas. Reconoce.",
+        "Si ya lo sabemos, no lo repitas.",
+        "Si es nuevo, captúralo con precisión.",
+        "Si es ruido, déjalo pasar."
+      ],
+      "constraints": [
+        "La esencia no se sobrescribe automáticamente.",
+        "El ruido no se almacena.",
+        "Las imágenes solo persisten como descripción textual.",
+        "El código solo guarda el delta, no el archivo completo."
+      ],
+      "invariants": [
+        "memory-store.js no participa en razonamiento activo.",
+        "distiller.js no toca la esencia, solo el contexto activo.",
+        "El núcleo identitario es de solo lectura."
+      ]
+    },
+    "agent": {
+      "name": "agent_name",
+      "tone": "define_tone",
+      "relation_type": "define_relation"
+    },
+    "user": {
+      "name": "user_name",
+      "communication_style": "define_style",
+      "preferred_depth": "define_depth"
+    }
+  }
+}
