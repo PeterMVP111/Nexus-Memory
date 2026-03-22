@@ -9,6 +9,7 @@
 class MemoryStore {
     constructor() {
         this.store = {};
+        this._protected = true;
     }
 
     saveEssence(key, value) {
@@ -29,6 +30,18 @@ class MemoryStore {
 
     hasEssence(key) {
         return this.store.hasOwnProperty(key);
+    }
+
+    updateEssence(key, value, { intentional = false } = {}) {
+        if (!intentional) {
+            console.warn(`updateEssence requires intentional: true. Skipped for '${key}'.`);
+            return;
+        }
+        this.store[key] = value;
+    }
+
+    isProtected() {
+        return this._protected === true;
     }
 }
 

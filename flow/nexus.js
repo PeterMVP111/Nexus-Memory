@@ -10,13 +10,8 @@ function processInput(input, context = {}) {
         return { stored: false, reason: 'noise', original: footprint.original };
     }
 
-    if (Array.isArray(footprint.memoryChunks)) {
-        return {
-            stored: true,
-            distilled: distill(footprint.memoryChunks),
-            meta: footprint,
-        };
-    }
+    // TODO: distillation of memory chunks — pending implementation
+    // when translator generates chunked output, route through distill() here
 
     return { stored: true, footprint };
 }

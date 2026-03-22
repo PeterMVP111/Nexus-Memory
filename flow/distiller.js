@@ -12,7 +12,7 @@ function distill(memoryData) {
         if (item.keep === true) return true;
         if (item.avoid === true) return false;
         // Items with meaningful notes survive even without explicit keep flag
-        if (item.note && item.note.trim().length > 0) return true;
+        if (item.note && item.note.trim().length > 5) return true;
         return false;
     });
 }

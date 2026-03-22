@@ -12,8 +12,9 @@ let passed = 0;
 tests.forEach(({ input, expect }, i) => {
     const result = processInput(input);
     const ok = result.stored === expect;
-    console.log(`${ok ? '✅' : '❌'} Test ${i + 1}: "${input.slice(0, 40)}..."`);
     if (ok) passed++;
+    const label = input.length > 40 ? input.slice(0, 40) + '...' : input;
+    console.log(`${ok ? '✅' : '❌'} Test ${i + 1}: "${label}"`);
 });
 
 console.log(`\n${passed}/${tests.length} tests passed`);
