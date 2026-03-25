@@ -1,20 +1,23 @@
-const { processInput } = require('./flow/nexus.js');
+import { processInput } from './flow/nexus.js';
+import MemoryStore from './core/identity/memory-store.js';
 
-const tests = [
-    { input: "ok",                          expect: false },
-    { input: "hola",                        expect: false },
-    { input: "necesito rediseñar el flujo de translator.js porque detecté un bug en el scoring", expect: true },
-    { input: "```function test() {}```",    expect: true },
-    { input: "yo soy Peter me recuerdas?", expect: true },
-];
+const store = new MemoryStore();
 
-let passed = 0;
-tests.forEach(({ input, expect }, i) => {
-    const result = processInput(input);
-    const ok = result.stored === expect;
-    if (ok) passed++;
-    const label = input.length > 40 ? input.slice(0, 40) + '...' : input;
-    console.log(`${ok ? '✅' : '❌'} Test ${i + 1}: "${label}"`);
+const testInputs = [
+    { text: "Hola mi amor!", context: { relation: "intimate" } },
+    { text: "Peter es el administrador.", context: { intention: "inform" } },
+    { text: "Noise", context: {} }
+    ];
+
+console.log('--- START TEST PIPELINE (ESM) ---');
+
+testInputs.forEach((input, index) => {
+      const output = processInput(input.text, input.context);
+      if (output.stored) {
+        console.log(`[Test ${index + 1}] Stored:`, output.footprint);
+      } else {
+              console.log(`[Test ${index + 1}] Ignored:`, output.reason);
+      }
 });
 
-console.log(`\n${passed}/${tests.length} tests passed`);
+console.log('--- END TEST PIPELINE ---');
