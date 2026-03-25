@@ -1,13 +1,17 @@
 {
-  "name": "nexus-memory",
-  "version": "1.0.1",
-  "description": "Contextual continuity and essence protection system for AI agents.",
-  "main": "flow/nexus.js",
-  "scripts": {
-    "test": "node test-pipeline.js",
-    "start": "node flow/nexus.js"
-  },
-  "author": "PeterMVP111",
-  "license": "MIT",
-  "dependencies": {}
+    "name": "nexus-memory",
+    "version": "1.0.1",
+    "description": "Contextual continuity and essence protection system for AI agents.",
+    "type": "module",
+    "main": "flow/nexus.js",
+    "scripts": {
+          "test": "node test-pipeline.js",
+          "start": "node mcp-server.js"
+    },
+    "author": "PeterMVP111",
+    "license": "MIT",
+    "dependencies": {
+          "@modelcontextprotocol/sdk": "^1.6.0",
+          "zod": "^3.24.2"
+    }
 }
